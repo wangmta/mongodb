@@ -4,7 +4,7 @@ function mediaList() {
   const url = 'mongodb://localhost:27017';
   const dbName = 'mediaList';
 
-  return function loadData(data) {
+  function loadData(data) {
     return new Promise(async (resolve, reject) => {
       const client = new MongoClient(url);
 
@@ -19,7 +19,9 @@ function mediaList() {
         reject(error);
       }
     });
-  };
+  }
+
+  return { loadData };
 }
 
 module.exports = mediaList();
